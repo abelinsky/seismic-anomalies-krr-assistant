@@ -4,4 +4,15 @@ pip
 python-dotenv
 tqdm
 typer
+
+# Для работы с SEG-Y
+segyio
+obspy
+
+# Для визуализации
+matplotlib>=3.6.0
+numpy>=1.24.0
+pandas>=1.5.0
+
+
 -e .
