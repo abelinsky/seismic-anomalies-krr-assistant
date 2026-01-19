@@ -13,6 +13,11 @@ obspy
 matplotlib>=3.6.0
 numpy>=1.24.0
 pandas>=1.5.0
+pyvista
+bruges 
+scipy
+trame 
+trame-vtk
 
 
 -e .

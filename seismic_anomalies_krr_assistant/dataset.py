@@ -4,6 +4,9 @@ from loguru import logger
 from tqdm import tqdm
 import typer
 
+import segyio
+import numpy as np
+
 from seismic_anomalies_krr_assistant.config import (
     PROCESSED_DATA_DIR,
     RAW_DATA_DIR,
@@ -14,18 +17,43 @@ app = typer.Typer()
 
 @app.command()
 def main(
-    # ---- REPLACE DEFAULT PATHS AS APPROPRIATE ----
-    input_path: Path = RAW_DATA_DIR / "dataset.csv",
-    output_path: Path = PROCESSED_DATA_DIR / "dataset.csv",
-    # ----------------------------------------------
+    input_path: Path = RAW_DATA_DIR / "F3_seismic.segy",
+    output_path: Path = PROCESSED_DATA_DIR / "F3_seismic.npy",
 ):
-    # ---- REPLACE THIS WITH YOUR OWN CODE ----
-    logger.info("Processing dataset...")
-    for i in tqdm(range(10), total=10):
-        if i == 5:
-            logger.info("Something happened for iteration 5.")
-    logger.success("Processing dataset complete.")
-    # -----------------------------------------
+    logger.info("Reading SEG-Y...")
+    # for i in tqdm(range(10), total=10):
+    #     if i == 5:
+    #         logger.info("Something happened for iteration 5.")
+
+    with segyio.open(input_path, "r") as f:
+        #  размеры из заголовков
+        ilines = f.ilines  # inline номера
+        xlines = f.xlines  # crossline номера
+        samples = f.samples  # временные отсчёты (мс)
+
+        logger.info(
+            f"Inlines: {ilines[0]}–{ilines[-1]} (всего: {len(ilines)})"
+        )
+        logger.info(
+            f"Crosslines: {xlines[0]}–{xlines[-1]} (всего: {len(xlines)})"
+        )
+        logger.info(
+            f"Время: {samples[0]}–{samples[-1]} мс (отсчётов: {len(samples)})"
+        )
+
+        # Загружаем все трассы в память
+        traces = np.array([np.copy(tr) for tr in f.trace])
+
+        # Преобразуем в 3D-куб: (inline, crossline, время)
+        cube = traces.reshape(len(ilines), len(xlines), len(samples))
+
+    logger.info("Форма куба:", cube.shape)
+
+    # Сохраняем в .npy
+    np.save(output_path, cube)
+    print(f"Сохранено: {output_path}")
+
+    logger.success("Обработка завершена, файл *.segy преобразован в *.npy.")
 
 
 if __name__ == "__main__":
