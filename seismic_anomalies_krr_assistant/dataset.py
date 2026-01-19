@@ -41,13 +41,22 @@ def main(
             f"Время: {samples[0]}–{samples[-1]} мс (отсчётов: {len(samples)})"
         )
 
+        dt_microsec = f.bin[segyio.BinField.Interval]  # в микросекундах
+        dt = dt_microsec / 1e6  # перевод в секунды
+        logger.info(f"Временной шаг: {dt} с ({dt*1000} мс)")
+
+        times = f.samples  # массив времён в миллисекундах
+        logger.info(f"Время первого отсчёта: {times[0]} мс")
+        logger.info(f"Время последнего отсчёта: {times[-1]} мс")
+        logger.info(f"Шаг: {times[1] - times[0]} мс")
+
         # Загружаем все трассы в память
         traces = np.array([np.copy(tr) for tr in f.trace])
 
         # Преобразуем в 3D-куб: (inline, crossline, время)
         cube = traces.reshape(len(ilines), len(xlines), len(samples))
 
-    logger.info("Форма куба:", cube.shape)
+    logger.info(f"Форма куба: {cube.shape}")
 
     # Сохраняем в .npy
     np.save(output_path, cube)

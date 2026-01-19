@@ -18,6 +18,6 @@ bruges
 scipy
 trame 
 trame-vtk
-
+owlready2
 
 -e .

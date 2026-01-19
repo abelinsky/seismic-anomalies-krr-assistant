@@ -1,0 +1,1690 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/ab/ontologies/seismic"
+         xmlns="http://www.semanticweb.org/ab/ontologies/seismic#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/ab/ontologies/seismic"/>
+
+<owl:ObjectProperty rdf:about="#locatedInStratigraphicUnit">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="#StratigraphicUnit"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#exhibitsAttenuationBelow">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasCrossline">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasHighAmplitude">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasInline">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasLowFrequency">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasTimeIndex">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isAnticlinal">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#SeismicAnomaly"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#AmplitudeLevel">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#High"/>
+        <rdf:Description rdf:about="#Low"/>
+        <rdf:Description rdf:about="#Medium"/>
+      </owl:oneOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#BrightSpot">
+  <rdfs:subClassOf rdf:resource="#SeismicAnomaly"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Chalk">
+  <rdfs:subClassOf rdf:resource="#StratigraphicUnit"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GasChargedReservoir">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BrightSpot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#locatedInStratigraphicUnit"/>
+          <owl:someValuesFrom rdf:resource="#Sandstone"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#exhibitsAttenuationBelow"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasHighAmplitude"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLowFrequency"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Sandstone">
+  <rdfs:subClassOf rdf:resource="#StratigraphicUnit"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SeismicAnomaly"/>
+
+<owl:Class rdf:about="#Shale">
+  <rdfs:subClassOf rdf:resource="#StratigraphicUnit"/>
+</owl:Class>
+
+<owl:Class rdf:about="#StratigraphicUnit"/>
+
+<owl:Class rdf:about="#StrongGasIndicator">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BrightSpot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#locatedInStratigraphicUnit"/>
+          <owl:someValuesFrom rdf:resource="#Sandstone"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#exhibitsAttenuationBelow"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasHighAmplitude"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasLowFrequency"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isAnticlinal"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#WeakGasIndicator">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#BrightSpot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#locatedInStratigraphicUnit"/>
+          <owl:someValuesFrom rdf:resource="#Sandstone"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasHighAmplitude"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#High">
+  <rdf:type rdf:resource="#AmplitudeLevel"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Low">
+  <rdf:type rdf:resource="#AmplitudeLevel"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Medium">
+  <rdf:type rdf:resource="#AmplitudeLevel"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_001">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#chalk_unit">
+  <rdf:type rdf:resource="#Chalk"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sandstone_unit">
+  <rdf:type rdf:resource="#Sandstone"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#shale_unit">
+  <rdf:type rdf:resource="#Shale"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_002">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">275</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">358</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">259</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_042">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">206</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">401</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">323</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_048">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">215</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">413</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_054">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">202</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">426</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">322</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_071">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">203</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">457</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">256</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_074">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">308</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">471</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">303</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_104">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">225</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">566</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">296</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_109">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">238</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">573</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">345</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_112">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">202</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">592</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">299</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_221">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">208</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">329</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">254</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_265">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">210</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">472</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">310</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_305">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">208</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">344</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_470">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">211</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">302</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_506">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">211</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">446</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">314</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_657">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">214</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">318</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_715">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">215</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">327</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">319</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_791">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">221</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">393</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">322</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_890">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">220</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">411</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_945">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">221</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">392</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">314</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1268">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">224</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">338</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">316</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1426">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">230</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">365</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">319</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1526">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">236</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">367</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1642">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">237</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">260</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1685">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">233</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">384</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">312</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1715">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">234</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">539</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1787">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">235</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">337</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">327</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1822">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">236</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">464</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">308</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1889">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">237</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">526</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">283</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1894">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">243</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">591</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">286</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_1986">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">246</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">459</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">285</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2015">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">242</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">393</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2023">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">241</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">408</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">292</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2122">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">252</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">323</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">253</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2371">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">247</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">499</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">278</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2381">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">335</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">323</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">252</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2489">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">246</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">535</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2677">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">384</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2750">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">438</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">250</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2837">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">256</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">290</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2913">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">534</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_2918">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">256</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">573</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">290</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3001">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">269</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">440</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">285</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3084">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">262</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">597</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">288</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3088">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">265</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3238">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">265</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">378</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">312</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3375">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">268</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">443</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">309</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3572">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">271</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">335</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">251</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3672">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">270</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">536</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3785">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">270</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">417</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">313</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3840">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">269</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">389</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">317</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3844">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">276</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">399</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">318</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3895">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">271</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">360</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">310</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3925">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">553</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">293</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3931">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">285</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">582</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">286</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3954">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">272</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">427</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">304</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_3956">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">272</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">426</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">315</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4042">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">280</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">433</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">315</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4103">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">282</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">476</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">278</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4125">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">278</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">592</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">284</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4143">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">281</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">418</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">316</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4174">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">283</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">333</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4242">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">288</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">572</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">346</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4256">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">352</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">313</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4312">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">292</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">384</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">290</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4373">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">334</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">388</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">261</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4393">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">280</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">527</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4424">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">284</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">410</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">307</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4458">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">288</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">337</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">312</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4470">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">286</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">372</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">323</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4589">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">450</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">299</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4639">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">288</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">533</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">293</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4709">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">297</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">416</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4713">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">289</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">424</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">303</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4779">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">350</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">329</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4906">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">299</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">454</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">295</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_4985">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">296</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">351</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">322</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5105">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">296</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">389</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">315</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5163">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">303</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">413</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">304</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5214">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">302</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">524</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">295</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5229">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">301</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">316</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5396">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">307</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">596</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">290</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5496">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">308</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">338</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">312</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5615">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">312</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">318</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">318</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5692">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">379</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5756">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">317</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">536</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">292</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5757">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">311</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">554</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">292</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_5788">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">327</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">404</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">307</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6023">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">366</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">319</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6050">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">367</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">560</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">308</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6091">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">304</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">317</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6136">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">321</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">323</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">315</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6412">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">328</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">499</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">291</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6777">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">346</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">395</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">324</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6876">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">348</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">377</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">313</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6919">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">349</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">412</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">322</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_6952">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">347</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">370</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">328</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7068">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">374</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">369</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">316</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7282">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">355</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">368</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">329</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7303">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">360</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">322</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">336</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7317">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">358</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">382</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7373">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">359</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">315</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">337</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7444">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">362</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">302</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">268</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7507">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">382</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">407</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">259</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7619">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">365</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">346</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">336</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7625">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">383</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">367</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">250</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7712">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">369</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">510</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">309</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7776">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">371</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">379</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7838">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">375</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">297</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_7964">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">370</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">369</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">330</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8170">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">375</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">317</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">331</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8179">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">377</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">337</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">337</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8331">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">388</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">460</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">251</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8395">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">380</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">597</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">319</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8570">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">388</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">358</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">329</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8619">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">385</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">593</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">306</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8689">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">388</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">389</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">326</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8814">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">392</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">459</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">303</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8831">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">387</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">582</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">325</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_8917">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">390</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">382</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">332</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_9049">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">393</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">488</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">314</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_9072">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">395</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">590</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">308</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_9107">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">394</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">484</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">305</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_9374">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#shale_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">396</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">475</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">255</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#anomaly_9380">
+  <rdf:type rdf:resource="#BrightSpot"/>
+  <locatedInStratigraphicUnit rdf:resource="#sandstone_unit"/>
+  <hasHighAmplitude rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasHighAmplitude>
+  <hasLowFrequency rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hasLowFrequency>
+  <hasInline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">396</hasInline>
+  <hasCrossline rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">507</hasCrossline>
+  <hasTimeIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">304</hasTimeIndex>
+  <exhibitsAttenuationBelow rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exhibitsAttenuationBelow>
+  <isAnticlinal rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isAnticlinal>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
