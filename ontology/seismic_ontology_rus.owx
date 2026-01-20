@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/ab/ontologies/seismic"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/ab/ontologies/seismic">
+    <Prefix name="" IRI="http://www.semanticweb.org/ab/ontologies/seismic/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#BrightSpot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chalk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GasChargedReservoir"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sandstone"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SeismicAnomaly"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Shale"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StratigraphicUnit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StrongGasIndicator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WeakGasIndicator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCrossline"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasHighAmplitude"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasInline"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLowFrequency"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasTimeIndex"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#isAnticlinal"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#High"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Low"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Medium"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#anomaly_001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#chalk_unit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#sandstone_unit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#shale_unit"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#GasChargedReservoir"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#BrightSpot"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+                <Class IRI="#Sandstone"/>
+            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="#exhibitsAttenuationBelow"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+            <DataHasValue>
+                <DataProperty IRI="#hasHighAmplitude"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+            <DataHasValue>
+                <DataProperty IRI="#hasLowFrequency"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#StrongGasIndicator"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#BrightSpot"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+                <Class IRI="#Sandstone"/>
+            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="#exhibitsAttenuationBelow"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+            <DataHasValue>
+                <DataProperty IRI="#hasHighAmplitude"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+            <DataHasValue>
+                <DataProperty IRI="#hasLowFrequency"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+            <DataHasValue>
+                <DataProperty IRI="#isAnticlinal"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WeakGasIndicator"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#BrightSpot"/>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+                <Class IRI="#Sandstone"/>
+            </ObjectSomeValuesFrom>
+            <DataHasValue>
+                <DataProperty IRI="#hasHighAmplitude"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#BrightSpot"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chalk"/>
+        <Class IRI="#StratigraphicUnit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sandstone"/>
+        <Class IRI="#StratigraphicUnit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Shale"/>
+        <Class IRI="#StratigraphicUnit"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#BrightSpot"/>
+        <NamedIndividual IRI="#anomaly_001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Chalk"/>
+        <NamedIndividual IRI="#chalk_unit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Sandstone"/>
+        <NamedIndividual IRI="#sandstone_unit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Shale"/>
+        <NamedIndividual IRI="#shale_unit"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+        <NamedIndividual IRI="#anomaly_001"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#locatedInStratigraphicUnit"/>
+        <Class IRI="#StratigraphicUnit"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasCrossline"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasHighAmplitude"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasInline"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasLowFrequency"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasTimeIndex"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#isAnticlinal"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasCrossline"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasHighAmplitude"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasInline"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasLowFrequency"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasTimeIndex"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#isAnticlinal"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasCrossline"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasHighAmplitude"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasInline"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasLowFrequency"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasTimeIndex"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#isAnticlinal"/>
+        <Class IRI="#SeismicAnomaly"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#exhibitsAttenuationBelow"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCrossline"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasHighAmplitude"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasInline"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasLowFrequency"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasTimeIndex"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#isAnticlinal"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BrightSpot</IRI>
+        <Literal>Яркое пятно</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Chalk</IRI>
+        <Literal xml:lang="ru">Мел</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GasChargedReservoir</IRI>
+        <Literal xml:lang="ru">Газонасыщенный коллектор</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sandstone</IRI>
+        <Literal xml:lang="ru">Песчаник</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SeismicAnomaly</IRI>
+        <Literal>Аномалия</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Shale</IRI>
+        <Literal xml:lang="ru">Аргиллит</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StratigraphicUnit</IRI>
+        <Literal xml:lang="ru">Стратиграфическая единица</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StrongGasIndicator</IRI>
+        <Literal xml:lang="ru">Высокодостоверный индикатор газа</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WeakGasIndicator</IRI>
+        <Literal xml:lang="ru">Предварительный индикатор газа</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
